@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11 клас</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #8e63a9; /* Фіолетовий фон */
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .gallery {
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .gallery img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            margin: 10px auto; /* Розташування фото по центру */
+            display: none;
+            border-radius: 10px;
+        }
+        @media (max-width: 600px) {
+            .gallery img {
+                width: 80%;
+            }
+        }
+        h1 {
+            text-align: center;
+        }
+        .controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .controls button {
+            background-color: #af7bcc; /* Фіолетовий колір кнопок */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0 5px;
+        }
+        .controls button:hover {
+            background-color: #724a80; /* Темніший фіолетовий колір при наведенні */
+        }
+    </style>
+</head>
+<body>
+    <h1>11 клас</h1>
+
+    <div class="controls">
+        <button onclick="prevSlide()">Назад</button>
+        <button onclick="nextSlide()">Вперед</button>
+    </div>
+
+    <div class="gallery">
+        <img src="photo51.jpg" alt="Photo 16" style="display: block;">
+        <img src="photo52.jpg" alt="Photo 17">
+        <img src="photo53.jpg" alt="Photo 18">
+    </div>
+
+    <script>
+        var currentIndex = 0;
+        var images = document.querySelectorAll('.gallery img');
+        var totalImages = images.length;
+
+        function showSlide(index) {
+            for (var i = 0; i < totalImages; i++) {
+                images[i].style.display = 'none';
+            }
+            images[index].style.display = 'block';
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            showSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            showSlide(currentIndex);
+        }
+
+        showSlide(currentIndex);
+    </script>
+</body>
+</html>
+

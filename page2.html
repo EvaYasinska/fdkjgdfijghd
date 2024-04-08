@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 клас</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f7dada;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .gallery {
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .gallery img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            display: none;
+            border-radius: 10px;
+        }
+        .controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .controls button {
+            background-color: #af7bcc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0 5px;
+        }
+        .controls button:hover {
+            background-color: #8e63a9;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;">8 клас</h1>
+
+    <div class="controls">
+        <button onclick="prevSlide()">Назад</button>
+        <button onclick="nextSlide()">Вперед</button>
+    </div>
+
+    <div class="gallery">
+        <img src="photo21.jpg" alt="Photo 1" style="display: block;">
+        <img src="photo22.jpg" alt="Photo 2">
+        <img src="photo23.jpg" alt="Photo 3">
+    </div>
+
+    <script>
+        var currentIndex = 0;
+        var images = document.querySelectorAll('.gallery img');
+        var totalImages = images.length;
+
+        function showSlide(index) {
+            for (var i = 0; i < totalImages; i++) {
+                images[i].style.display = 'none';
+            }
+            images[index].style.display = 'block';
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            showSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            showSlide(currentIndex);
+        }
+
+        showSlide(currentIndex);
+    </script>
+</body>
+</html>
